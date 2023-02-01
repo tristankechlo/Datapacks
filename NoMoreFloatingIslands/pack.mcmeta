@@ -1,0 +1,19 @@
+{
+    "pack": {
+        "pack_format": 10,
+        "description": [
+            {
+                "text": "No more ",
+                "color": "aqua"
+            },
+            {
+                "text": "Floating Islands",
+                "color": "red"
+            },
+            {
+                "text": " from Explorations+",
+                "color": "aqua"
+            }
+        ]
+    }
+}
