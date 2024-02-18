@@ -8,7 +8,7 @@ const settings = [
     name: "NoMoreFloatingIslands",
     mc: targetVersion,
     replace: {
-      pack_format: Symbol("Test"),
+      pack_format: 15,
       authors: ['Buecher_wurm']
     },
   },
