@@ -1,0 +1,14 @@
+{
+  "name": "datapacks",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "this repository contains all datapacks to adjust various things for my mods",
+  "scripts": {
+    "prebuild": "node ./scripts/setupOutFolder.js",
+    "build": "node ./scripts/datapack.js"
+  },
+  "devDependencies": {
+    "archiver": "^6.0.1",
+    "glob": "^10.3.10"
+  }
+}
