@@ -1,16 +1,18 @@
 import { join, dirname, resolve, relative, extname, sep } from 'path';
 import { settings } from '../settings.js';
 import { globSync } from 'glob';
+import archiver from 'archiver';
 import fs from 'fs';
 
 const root = resolve(dirname('.'));
 const dist = join(root, 'dist');
 
-const JSON_FILES = ['.json', '.mcmeta'];
-const TEXT_FILES = [...JSON_FILES, '.txt', '.md'];
+const JSON_FILES = ['.json', '.mcmeta']; // all files with this ending will be minified during build
+const TEXT_FILES = [...JSON_FILES, '.txt', '.md']; // all files with this ending support string replacements
 
 const BASE_TYPES = ['boolean', 'bigint', 'number', 'string'];
 
+// ensure dist folder is present
 if (!fs.existsSync(dist)) {
   fs.mkdirSync(dist);
 }
@@ -44,7 +46,7 @@ packLoop: for (const pack of settings) {
   for (let i = 0; i < files.length; i++) {
     let targetFile = files[i];
     try {
-      // ensure needed folders exists
+      // ensure needed sub-folders exists
       mkdir(resolve(tempOutFolder, dirname(targetFile)));
       // read file
       let [content, extension] = readFile(join(srcFolder, targetFile));
@@ -69,9 +71,16 @@ packLoop: for (const pack of settings) {
   }
 
   // add all files to a zip-file
-  let filename = `${pack.name}-${pack.mc}.txt`;
-  fs.writeFileSync(join(dist, filename), files.map((f) => '.' + sep + f).join('\n'));
-  console.log(`\x1b[32m[SUCCESS]\x1b[0m Created datapack \x1b[36m${filename}\x1b[0m from folder \x1b[30m./${pack.name}/\x1b[0m`);
+  let filename = `${pack.name}-${pack.mc}.zip`;
+  const output = fs.createWriteStream(join(dist, filename));
+  const archive = archiver('zip', { zlib: { level: 9 } });
+  output.on('close', function () {
+    console.log(`\x1b[32m[SUCCESS]\x1b[0m Created datapack \x1b[36m${filename}\x1b[0m from folder \x1b[30m./${pack.name}/\x1b[0m`);
+    console.log(`          Total size: \x1b[30m${archive.pointer()} bytes\x1b[0m`);
+  });
+  archive.pipe(output);
+  archive.directory(tempOutFolder, false);  // everything from tempOutFolder at the root of the zip
+  archive.finalize();
 }
 
 function mkdir(path) {
