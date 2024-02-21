@@ -12,6 +12,14 @@ const settings = [
       authors: ['Buecher_wurm']
     },
   },
+  {
+    name: "UltraRareScarecrows",
+    mc: targetVersion,
+    replace: {
+      pack_format: 15,
+      authors: ['Buecher_wurm']
+    },
+  },
 ];
 
 

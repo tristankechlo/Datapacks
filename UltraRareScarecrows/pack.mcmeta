@@ -1,0 +1,19 @@
+{
+    "pack": {
+        "pack_format": @@pack_format@@,
+        "description": [
+            {
+                "text": "Less frequent ",
+                "color": "aqua"
+            },
+            {
+                "text": "Scarecrows",
+                "color": "red"
+            },
+            {
+                "text": " from Explorations+",
+                "color": "aqua"
+            }
+        ]
+    }
+}
