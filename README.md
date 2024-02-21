@@ -3,6 +3,7 @@ this repository contains all datapacks to adjust various things for my mods
 
 ## Available Datapacks
  - NoMoreFloatingIslands => prevents the Floating Islands from [Explorations+](https://github.com/tristankechlo/Explorations/) from spawning
+ - UltraRareScarecrows => Scarecrows from [Explorations+](https://github.com/tristankechlo/Explorations/) will generate ~2.5x less frequent
  
 ## How to build the datapacks?
 To build the datapacks, Node.js needs to be installed.
