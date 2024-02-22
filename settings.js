@@ -7,6 +7,7 @@ const settings = [
   {
     name: "NoMoreFloatingIslands",
     mc: targetVersion,
+    version: "1.0.0",
     replace: {
       pack_format: 15,
       authors: ['Buecher_wurm']
@@ -15,6 +16,7 @@ const settings = [
   {
     name: "UltraRareScarecrows",
     mc: targetVersion,
+    version: "1.0.0",
     replace: {
       pack_format: 15,
       authors: ['Buecher_wurm']
