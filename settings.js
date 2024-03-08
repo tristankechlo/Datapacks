@@ -7,6 +7,7 @@ const settings = [
   {
     name: "NoMoreFloatingIslands",
     mc: targetVersion,
+    version: "1.0.0",
     replace: {
       pack_format: 12,
       authors: ['Buecher_wurm']
