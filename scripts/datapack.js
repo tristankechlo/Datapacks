@@ -18,6 +18,14 @@ if (!fs.existsSync(dist)) {
 }
 
 packLoop: for (const pack of settings) {
+
+  // ensure pack has a name specified
+  if(!Object.hasOwn(pack, 'name')) {
+    console.error(`\x1b[31m[ERROR]\x1b[0m No name specified, skipping datapack.`);
+    console.error(`        \x1b[30m${JSON.stringify(pack)}\x1b[0m`);
+    continue packLoop;
+  }
+
   // set missing options
   pack.minifyJSON = (typeof pack.minifyJSON === 'boolean') ? pack.minifyJSON : true;
 
@@ -70,13 +78,15 @@ packLoop: for (const pack of settings) {
     }
   }
 
+  let version = Object.hasOwn(pack, 'version') ? `${pack.mc}-${pack.version}` : `${pack.mc}`;
+  let filename = `${pack.name}-${version}.zip`;
   // add all files to a zip-file
-  let filename = `${pack.name}-${pack.mc}.zip`;
   const output = fs.createWriteStream(join(dist, filename));
   const archive = archiver('zip', { zlib: { level: 9 } });
   output.on('close', function () {
+    let bytes = formatBytes(archive.pointer());
     console.log(`\x1b[32m[SUCCESS]\x1b[0m Created datapack \x1b[36m${filename}\x1b[0m from folder \x1b[30m./${pack.name}/\x1b[0m`);
-    console.log(`          Total size: \x1b[30m${archive.pointer()} bytes\x1b[0m`);
+    console.log(`          Total size: \x1b[30m${bytes}\x1b[0m`);
   });
   archive.pipe(output);
   archive.directory(tempOutFolder, false);  // everything from tempOutFolder at the root of the zip
@@ -123,3 +133,14 @@ function doStringReplacements(content, replacements, targetFile) {
   return content;
 }
 
+function formatBytes(bytes, decimals = 2) {
+  if (!+bytes) return '0 Bytes'
+
+  const k = 1024
+  const dm = decimals < 0 ? 0 : decimals
+  const sizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+}
