@@ -1,4 +1,4 @@
-# Datapacks [![Discord](https://img.shields.io/discord/639540436524072970?color=0a48c4&label=%20&logo=discord&logoColor=FFF)](https://discord.gg/bhUaWhq)
+# Datapacks [![Discord](https://img.shields.io/discord/639540436524072970?style=for-the-badge&logo=discord&logoColor=fff&label=%20&color=0a48c4)](https://discord.gg/bhUaWhq)
 
 this repository contains all datapacks to adjust various things for my mods  
 
@@ -7,8 +7,8 @@ this repository contains all datapacks to adjust various things for my mods
 **NoMoreFloatingIslands**  
 prevents the Floating Islands from [Explorations+](https://github.com/tristankechlo/Explorations/) from spawning
 
-[![CurseForge](http://cf.way2muchnoise.eu/820343.svg)](https://www.curseforge.com/minecraft/texture-packs/no-more-floating-islands) 
-[![Modrinth Downloads](https://img.shields.io/modrinth/dt/mxvtRtX2?style=flat&logo=modrinth&logoColor=000&label=%20&labelColor=1bd96a&color=2D2D2D)](https://modrinth.com/datapack/no-more-floating-islands)
+[![Curseforge](https://img.shields.io/curseforge/dt/820343?style=for-the-badge&logo=curseforge&color=e05d44)](https://www.curseforge.com/minecraft/texture-packs/no-more-floating-islands)&nbsp;
+[![Modrinth](https://img.shields.io/modrinth/dt/mxvtRtX2?style=for-the-badge&logo=modrinth&color=e05d44)](https://modrinth.com/datapack/no-more-floating-islands)
 
 <!-- add <hr/> if more datapacks get added -->
  
